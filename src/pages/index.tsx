@@ -40,8 +40,14 @@ export default function Home() {
       <main className={styles.main}>
         <div className="ms-Grid">
           <div className="ms-Grid-row">
-            <LeftCard />
-            <RightCard />
+            <div className="ms-Grid-col ms-sm2"></div>
+            <div className="ms-Grid-col ms-sm8">
+              <div className="ms-Grid-row">
+                <LeftCard />
+                <RightCard />
+              </div>
+            </div>
+            <div className="ms-Grid-col ms-sm2"></div>
           </div>
         </div>
       </main>
@@ -76,8 +82,8 @@ function RightCard() {
         className={mergeClasses(styles.card, "ms-Grid")}
         style={{
           backgroundImage: 'url("/castle-background.png")',
-          backgroundSize: 'cover',
-          backgroundPositionX: '-250px'
+          backgroundSize: "cover",
+          backgroundPositionX: "-250px",
         }}
       ></Card>
     </div>
