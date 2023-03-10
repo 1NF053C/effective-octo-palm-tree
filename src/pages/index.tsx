@@ -9,17 +9,30 @@ const useStyles = makeStyles({
     backgroundImage: 'url("/website-background.png")',
     backgroundSize: "cover",
   },
-  leftCard: {
-    ...shorthands.borderRadius('0px'),
-    height: '600px',
-    width: '500px'
+  cardContainer: {
+    ...shorthands.padding("0px"),
+    width: "fit-content",
   },
-  rightCard: {
+  leftCard: {
     ...shorthands.borderRadius("0px"),
     height: "600px",
-    width: "300px",
-    marginLeft: 'auto',
-    marginRight: 'auto'
+    width: "500px",
+  },
+  midCard: {
+    ...shorthands.borderRadius("0px"),
+    height: "600px",
+    width: "250px",
+  },
+  endCard: {
+    ...shorthands.borderRadius("0px"),
+    ...shorthands.padding("0px"),
+    height: "600px",
+    width: "250px",
+  },
+  shortCard: {
+    ...shorthands.borderRadius("0px"),
+    minHeight: "300px",
+    width: "250px",
   },
   welcomeMessage: {},
   welcomeMessageText: {
@@ -46,14 +59,15 @@ export default function Home() {
       <main className={styles.main}>
         <div className="ms-Grid">
           <div className="ms-Grid-row">
-            <div className="ms-Grid-col ms-sm2"></div>
-            <div className="ms-Grid-col ms-sm8">
-              <div className="ms-Grid-row">
-                <LeftCard className="ms-Grid-col ms-sm12 ms-md12 ms-lg12 ms-xl8" />
-                <RightCard className="ms-Grid-col ms-sm12 ms-md12 ms-lg12 ms-xl4" />
+            <div className="ms-Grid-col"></div>
+            <div className="ms-Grid-col">
+              <div className={mergeClasses("ms-Grid-row")}>
+                <LeftCard className="ms-Grid-col ms-sm12 ms-md12 ms-lg12 ms-xl9" />
+                <MidCard className="ms-Grid-col ms-sm6 ms-md6 ms-lg6 ms-xl3" />
+                <EndCard className="ms-Grid-col ms-sm6 ms-md6 ms-lg6 ms-xl3" />
               </div>
             </div>
-            <div className="ms-Grid-col ms-sm2"></div>
+            <div className="ms-Grid-col"></div>
           </div>
         </div>
       </main>
@@ -64,7 +78,7 @@ export default function Home() {
 function LeftCard({ className }: { className: string }) {
   const styles = useStyles();
   return (
-    <div className={mergeClasses(className)}>
+    <div className={mergeClasses(styles.cardContainer, className)}>
       <Card className={mergeClasses(styles.leftCard, "ms-Grid")}>
         <div className="ms-Grid-row">
           <WelcomeMessage />
@@ -80,18 +94,40 @@ function LeftCard({ className }: { className: string }) {
   );
 }
 
-function RightCard({ className }: { className: string }) {
+function MidCard({ className }: { className: string }) {
   const styles = useStyles();
   return (
-    <div className={mergeClasses(className)}>
+    <div className={mergeClasses(styles.cardContainer, className)}>
       <Card
-        className={mergeClasses(styles.rightCard, "ms-Grid")}
+        className={mergeClasses(styles.midCard, "ms-Grid")}
         style={{
           backgroundImage: 'url("/castle-background.png")',
           backgroundSize: "cover",
           backgroundPositionX: "-250px",
         }}
       ></Card>
+    </div>
+  );
+}
+
+function EndCard({ className }: { className: string }) {
+  const styles = useStyles();
+  return (
+    <div className={mergeClasses(styles.cardContainer, className)}>
+      <div className={mergeClasses(styles.endCard)}>
+        <div
+          className={mergeClasses(styles.shortCard)}
+          style={{
+            backgroundColor: "black",
+          }}
+        ></div>
+        <div
+          className={mergeClasses(styles.shortCard)}
+          style={{
+            backgroundColor: "gray",
+          }}
+        ></div>
+      </div>
     </div>
   );
 }
