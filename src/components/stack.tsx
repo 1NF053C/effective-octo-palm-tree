@@ -20,9 +20,6 @@ const useStyles = makeStyles({
       flexShrink: 1,
     },
   },
-  flexDirRow: {
-    flexDirection: "row",
-  },
   item: {
     height: "auto",
     width: "auto",
@@ -31,17 +28,13 @@ const useStyles = makeStyles({
 });
 
 interface StackProps {
-  dir: "row" | "col";
   children: any;
-  itemStyles?: CSSProperties;
+  overrideStyles?: CSSProperties;
+  overrideItemStyles?: CSSProperties;
 }
 
-export function Stack({ children, dir, itemStyles }: StackProps) {
+export function Stack({ children, overrideStyles, overrideItemStyles }: StackProps) {
   const styles = useStyles();
-
-  if (dir === "row") {
-    styles.root = mergeClasses(styles.root, styles.flexDirRow);
-  }
 
   const childrenWithProps = React.Children.map(children, (child) => {
     if (React.isValidElement(child)) {
@@ -51,7 +44,7 @@ export function Stack({ children, dir, itemStyles }: StackProps) {
     return child;
   });
 
-  return <div className={styles.root}>{childrenWithProps}</div>;
+  return <div className={styles.root} style={overrideStyles}>{childrenWithProps}</div>;
 }
 
 interface StackItemProps {

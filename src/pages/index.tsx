@@ -29,7 +29,9 @@ export default function Home() {
       </Head>
       <main className={styles.main}>
         <Card className={styles.card}>
-          <Stack dir="row" itemStyles={{margin: '10px'}}>
+          <Stack
+            overrideStyles={{ flexDirection: 'row' }}
+            overrideItemStyles={{ margin: '10px' }}>
             <StackItem>Hello</StackItem>
             <StackItem>World</StackItem>
           </Stack>
