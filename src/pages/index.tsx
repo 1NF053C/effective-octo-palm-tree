@@ -14,16 +14,19 @@ const useStyles = makeStyles({
     ...shorthands.borderRadius("0px"),
     height: "600px",
     width: "350px",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "space-between",
   },
-  cardHeader: {},
-  cardHeaderText: {
+  welcomeMessage: {},
+  welcomeMessageText: {
     fontSize: "48px",
     lineHeight: "48px",
   },
-  cardBodyLinkItemList: {},
-  cardBodyLinkItem: {},
-  cardFooter: {
-    bottom: '0px'
+  navigationList: {},
+  navigationListItem: {},
+  search: {
+    bottom: "0px",
   },
 });
 
@@ -39,94 +42,107 @@ export default function Home() {
       </Head>
       <main className={styles.main}>
         <Card className={mergeClasses(styles.card, "ms-Grid")}>
-          <div className={mergeClasses(styles.cardHeader, "ms-Grid-row")}>
-            <span className="ms-Grid-col ms-sm2"></span>
-            <span
-              className={mergeClasses(
-                styles.cardHeaderText,
-                "ms-Grid-col ms-sm8",
-                "ms-font-su ms-fontColor-themePrimary"
-              )}
-            >
-              Welcome
-            </span>
-            <span className="ms-Grid-col ms-sm2"></span>
+          <div className="ms-Grid-row">
+            <WelcomeMessage />
           </div>
-          <div>
-            <div
-              className={mergeClasses(
-                styles.cardBodyLinkItemList,
-                "ms-Grid-row"
-              )}
-            >
-              <span className="ms-Grid-col ms-sm3"></span>
-              <span className="ms-Grid-col ms-sm6">
-                {[
-                  {
-                    image: {
-                      alt: "a developer drinking coffee, pixel art",
-                      url: "/dev-pixel-art-1.png",
-                    },
-                    url: "https://github.com/1NF053C",
-                  },
-                  {
-                    image: {
-                      url: "/honey-pot.png",
-                      alt: "a pot of honey",
-                    },
-                    url: "coming soon",
-                  },
-                  {
-                    image: {
-                      alt: "a developer drinking coffee, pixel art",
-                      url: "/dev-pixel-art-1.png",
-                    },
-                    url: "https://github.com/1NF053C",
-                  },
-                  {
-                    image: {
-                      url: "/honey-pot.png",
-                      alt: "a pot of honey",
-                    },
-                    url: "coming soon",
-                  },
-                ].map((link) => (
-                  <div
-                    className={mergeClasses(
-                      styles.cardBodyLinkItem,
-                      "ms-Grid-col"
-                    )}
-                  >
-                    <a
-                      rel="noopener noreferrer"
-                      target="_blank"
-                      href={link.url}
-                    >
-                      <Image
-                        style={{ border: "1px solid #ccc" }}
-                        height="48"
-                        width="48"
-                        src={link.image.url}
-                        alt={link.image.alt}
-                      />
-                    </a>
-                  </div>
-                ))}
-              </span>
-              <span className="ms-Grid-col ms-sm3"></span>
-            </div>
+          <div className="ms-Grid-row">
+            <Navigation />
           </div>
-          <div className={mergeClasses(styles.cardFooter, "ms-Grid-row")}>
-            <span className="ms-Grid-col ms-sm2"></span>
-            <Input
-              className="ms-Grid-col ms-sm8"
-              type="search"
-              placeholder="Search"
-            />
-            <span className="ms-Grid-col ms-sm2"></span>
+          <div className="ms-Grid-row">
+            <Search />
           </div>
         </Card>
       </main>
     </>
+  );
+}
+
+function WelcomeMessage() {
+  const styles = useStyles();
+  return (
+    <div className={styles.welcomeMessage}>
+      <span className="ms-Grid-col ms-sm2"></span>
+      <span
+        className={mergeClasses(
+          styles.welcomeMessageText,
+          "ms-Grid-col ms-sm8",
+          "ms-font-su ms-fontColor-themePrimary"
+        )}
+      >
+        Welcome
+      </span>
+      <span className="ms-Grid-col ms-sm2"></span>
+    </div>
+  );
+}
+
+function Navigation() {
+  const styles = useStyles();
+  return (
+    <div className={styles.navigationList}>
+      <span className="ms-Grid-col ms-sm3"></span>
+      <span className="ms-Grid-col ms-sm6">
+        {[
+          {
+            image: {
+              alt: "a developer drinking coffee, pixel art",
+              url: "/dev-pixel-art-1.png",
+            },
+            url: "https://github.com/1NF053C",
+          },
+          {
+            image: {
+              url: "/honey-pot.png",
+              alt: "a pot of honey",
+            },
+            url: "coming soon",
+          },
+          {
+            image: {
+              alt: "a developer drinking coffee, pixel art",
+              url: "/dev-pixel-art-1.png",
+            },
+            url: "https://github.com/1NF053C",
+          },
+          {
+            image: {
+              url: "/honey-pot.png",
+              alt: "a pot of honey",
+            },
+            url: "coming soon",
+          },
+        ].map((link) => (
+          <div
+            className={mergeClasses(styles.navigationListItem, "ms-Grid-col")}
+          >
+            <a rel="noopener noreferrer" target="_blank" href={link.url}>
+              <Image
+                style={{ border: "1px solid #ccc" }}
+                height="48"
+                width="48"
+                src={link.image.url}
+                alt={link.image.alt}
+              />
+            </a>
+          </div>
+        ))}
+      </span>
+      <span className="ms-Grid-col ms-sm3"></span>
+    </div>
+  );
+}
+
+function Search() {
+  const styles = useStyles();
+  return (
+    <div className={styles.search}>
+      <span className="ms-Grid-col ms-sm2"></span>
+      <Input
+        className="ms-Grid-col ms-sm8"
+        type="search"
+        placeholder="Search"
+      />
+      <span className="ms-Grid-col ms-sm2"></span>
+    </div>
   );
 }
