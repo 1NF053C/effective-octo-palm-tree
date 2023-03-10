@@ -8,12 +8,18 @@ const useStyles = makeStyles({
   main: {
     backgroundImage: 'url("/website-background.png")',
     backgroundSize: "cover",
-    ...shorthands.padding("48px"),
   },
-  card: {
+  leftCard: {
+    ...shorthands.borderRadius('0px'),
+    height: '600px',
+    width: '500px'
+  },
+  rightCard: {
     ...shorthands.borderRadius("0px"),
     height: "600px",
-    width: "350px",
+    width: "300px",
+    marginLeft: 'auto',
+    marginRight: 'auto'
   },
   welcomeMessage: {},
   welcomeMessageText: {
@@ -43,8 +49,8 @@ export default function Home() {
             <div className="ms-Grid-col ms-sm2"></div>
             <div className="ms-Grid-col ms-sm8">
               <div className="ms-Grid-row">
-                <LeftCard />
-                <RightCard />
+                <LeftCard className="ms-Grid-col ms-sm12 ms-md12 ms-lg12 ms-xl8" />
+                <RightCard className="ms-Grid-col ms-sm12 ms-md12 ms-lg12 ms-xl4" />
               </div>
             </div>
             <div className="ms-Grid-col ms-sm2"></div>
@@ -55,11 +61,11 @@ export default function Home() {
   );
 }
 
-function LeftCard() {
+function LeftCard({ className }: { className: string }) {
   const styles = useStyles();
   return (
-    <div className="ms-Grid-col">
-      <Card className={mergeClasses(styles.card, "ms-Grid")}>
+    <div className={mergeClasses(className)}>
+      <Card className={mergeClasses(styles.leftCard, "ms-Grid")}>
         <div className="ms-Grid-row">
           <WelcomeMessage />
         </div>
@@ -74,12 +80,12 @@ function LeftCard() {
   );
 }
 
-function RightCard() {
+function RightCard({ className }: { className: string }) {
   const styles = useStyles();
   return (
-    <div className="ms-Grid-col">
+    <div className={mergeClasses(className)}>
       <Card
-        className={mergeClasses(styles.card, "ms-Grid")}
+        className={mergeClasses(styles.rightCard, "ms-Grid")}
         style={{
           backgroundImage: 'url("/castle-background.png")',
           backgroundSize: "cover",
