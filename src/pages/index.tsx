@@ -8,15 +8,12 @@ const useStyles = makeStyles({
   main: {
     backgroundImage: 'url("/website-background.png")',
     backgroundSize: "cover",
+    ...shorthands.padding("48px"),
   },
   card: {
-    ...shorthands.margin("48px"),
     ...shorthands.borderRadius("0px"),
     height: "600px",
     width: "350px",
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "space-between",
   },
   welcomeMessage: {},
   welcomeMessageText: {
@@ -41,19 +38,49 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={styles.main}>
-        <Card className={mergeClasses(styles.card, "ms-Grid")}>
+        <div className="ms-Grid">
           <div className="ms-Grid-row">
-            <WelcomeMessage />
+            <LeftCard />
+            <RightCard />
           </div>
-          <div className="ms-Grid-row">
-            <Navigation />
-          </div>
-          <div className="ms-Grid-row">
-            <Search />
-          </div>
-        </Card>
+        </div>
       </main>
     </>
+  );
+}
+
+function LeftCard() {
+  const styles = useStyles();
+  return (
+    <div className="ms-Grid-col">
+      <Card className={mergeClasses(styles.card, "ms-Grid")}>
+        <div className="ms-Grid-row">
+          <WelcomeMessage />
+        </div>
+        <div className="ms-Grid-row">
+          <Navigation />
+        </div>
+        <div className="ms-Grid-row">
+          <Search />
+        </div>
+      </Card>
+    </div>
+  );
+}
+
+function RightCard() {
+  const styles = useStyles();
+  return (
+    <div className="ms-Grid-col">
+      <Card
+        className={mergeClasses(styles.card, "ms-Grid")}
+        style={{
+          backgroundImage: 'url("/castle-background.png")',
+          backgroundSize: 'cover',
+          backgroundPositionX: '-250px'
+        }}
+      ></Card>
+    </div>
   );
 }
 
@@ -84,35 +111,44 @@ function Navigation() {
       <span className="ms-Grid-col ms-sm6">
         {[
           {
+            id: "1",
             image: {
               alt: "a developer drinking coffee, pixel art",
               url: "/dev-pixel-art-1.png",
             },
             url: "https://github.com/1NF053C",
+            text: "Github",
           },
           {
+            id: "2",
             image: {
               url: "/honey-pot.png",
               alt: "a pot of honey",
             },
-            url: "coming soon",
+            url: "#",
+            text: "coming soon",
           },
           {
+            id: "3",
             image: {
               alt: "a developer drinking coffee, pixel art",
               url: "/dev-pixel-art-1.png",
             },
             url: "https://github.com/1NF053C",
+            text: "Github",
           },
           {
+            id: "4",
             image: {
               url: "/honey-pot.png",
               alt: "a pot of honey",
             },
-            url: "coming soon",
+            url: "#",
+            text: "coming soon",
           },
         ].map((link) => (
           <div
+            key={link.id}
             className={mergeClasses(styles.navigationListItem, "ms-Grid-col")}
           >
             <a rel="noopener noreferrer" target="_blank" href={link.url}>
