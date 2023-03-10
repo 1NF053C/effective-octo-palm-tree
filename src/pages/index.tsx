@@ -1,11 +1,7 @@
 import Head from "next/head";
-import { Input } from "@fluentui/react-components";
-import {
-  Card,
-  CardHeader,
-} from "@fluentui/react-components/unstable";
+import { Input, mergeClasses } from "@fluentui/react-components";
+import { Card } from "@fluentui/react-components/unstable";
 import { makeStyles, shorthands } from "@fluentui/react-components";
-import { Stack, StackItem } from "@/components/stack";
 import Image from "next/image";
 
 const useStyles = makeStyles({
@@ -19,13 +15,15 @@ const useStyles = makeStyles({
     height: "600px",
     width: "350px",
   },
-  cardHeader: {
-    paddingTop: "30px",
-    paddingBottom: "30px",
+  cardHeader: {},
+  cardHeaderText: {
+    fontSize: "48px",
+    lineHeight: "48px",
   },
+  cardBodyLinkItemList: {},
+  cardBodyLinkItem: {},
   cardFooter: {
-    paddingTop: "30px",
-    paddingBottom: "30px",
+    bottom: '0px'
   },
 });
 
@@ -40,84 +38,93 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={styles.main}>
-        <Card className={styles.card}>
-          <CardHeader
-            className={styles.cardHeader}
-            header={
-              <Stack
-                overrideStyles={{
-                  flexDirection: "row",
-                  justifyContent: "center",
-                }}
-              >
-                <StackItem>
-                  <span
-                    style={{
-                      fontSize: "48px",
-                      lineHeight: "48px",
-                    }}
+        <Card className={mergeClasses(styles.card, "ms-Grid")}>
+          <div className={mergeClasses(styles.cardHeader, "ms-Grid-row")}>
+            <span className="ms-Grid-col ms-sm2"></span>
+            <span
+              className={mergeClasses(
+                styles.cardHeaderText,
+                "ms-Grid-col ms-sm8",
+                "ms-font-su ms-fontColor-themePrimary"
+              )}
+            >
+              Welcome
+            </span>
+            <span className="ms-Grid-col ms-sm2"></span>
+          </div>
+          <div>
+            <div
+              className={mergeClasses(
+                styles.cardBodyLinkItemList,
+                "ms-Grid-row"
+              )}
+            >
+              <span className="ms-Grid-col ms-sm3"></span>
+              <span className="ms-Grid-col ms-sm6">
+                {[
+                  {
+                    image: {
+                      alt: "a developer drinking coffee, pixel art",
+                      url: "/dev-pixel-art-1.png",
+                    },
+                    url: "https://github.com/1NF053C",
+                  },
+                  {
+                    image: {
+                      url: "/honey-pot.png",
+                      alt: "a pot of honey",
+                    },
+                    url: "coming soon",
+                  },
+                  {
+                    image: {
+                      alt: "a developer drinking coffee, pixel art",
+                      url: "/dev-pixel-art-1.png",
+                    },
+                    url: "https://github.com/1NF053C",
+                  },
+                  {
+                    image: {
+                      url: "/honey-pot.png",
+                      alt: "a pot of honey",
+                    },
+                    url: "coming soon",
+                  },
+                ].map((link) => (
+                  <div
+                    className={mergeClasses(
+                      styles.cardBodyLinkItem,
+                      "ms-Grid-col"
+                    )}
                   >
-                    Welcome
-                  </span>
-                </StackItem>
-              </Stack>
-            }
-          />
-          <Stack
-            overrideStyles={{
-              flexDirection: "row",
-              justifyContent: "center",
-            }}
-            overrideItemStyles={{ marginBottom: "10px" }}
-          >
-            <StackItem>
-              <Stack>
-                <StackItem>
-                  <Stack
-                    overrideStyles={{
-                      gap: "20px",
-                      flexDirection: "row",
-                      marginTop: "20px",
-                      marginBottom: "20px",
-                    }}
-                  >
-                    {[
-                      {
-                        image: {
-                          alt: "a developer drinking coffee, pixel art",
-                          url: "/dev-pixel-art-1.png",
-                        },
-                        url: "https://github.com/1NF053C",
-                      },
-                      {
-                        image: {
-                          url: "/honey-pot.png",
-                          alt: "a pot of honey",
-                        },
-                        url: "coming soon",
-                      },
-                    ].map((link) => (
-                      <StackItem>
-                        <a
-                          rel="noopener noreferrer"
-                          target="_blank"
-                          href={link.url}
-                        >
-                          <Image
-                            style={{ border: "1px solid #ccc" }}
-                            height="48"
-                            width="48"
-                            src={link.image.url}
-                            alt={link.image.alt}
-                          />
-                        </a>
-                      </StackItem>
-                    ))}
-                  </Stack>
-                </StackItem>
-              </Stack>
-            </StackItem>
-          </Stack>
+                    <a
+                      rel="noopener noreferrer"
+                      target="_blank"
+                      href={link.url}
+                    >
+                      <Image
+                        style={{ border: "1px solid #ccc" }}
+                        height="48"
+                        width="48"
+                        src={link.image.url}
+                        alt={link.image.alt}
+                      />
+                    </a>
+                  </div>
+                ))}
+              </span>
+              <span className="ms-Grid-col ms-sm3"></span>
+            </div>
+          </div>
+          <div className={mergeClasses(styles.cardFooter, "ms-Grid-row")}>
+            <span className="ms-Grid-col ms-sm2"></span>
+            <Input
+              className="ms-Grid-col ms-sm8"
+              type="search"
+              placeholder="Search"
+            />
+            <span className="ms-Grid-col ms-sm2"></span>
+          </div>
         </Card>
       </main>
     </>
