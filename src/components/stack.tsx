@@ -1,4 +1,4 @@
-import { makeStyles, mergeClasses } from "@fluentui/react-components";
+import { makeStyles } from "@fluentui/react-components";
 import React from "react";
 import { CSSProperties } from "react";
 
@@ -39,7 +39,7 @@ export function Stack({ children, overrideStyles, overrideItemStyles }: StackPro
   const childrenWithProps = React.Children.map(children, (child) => {
     if (React.isValidElement(child)) {
       /* @ts-ignore */
-      return React.cloneElement(child, { itemStyles });
+      return React.cloneElement(child, { overrideItemStyles });
     }
     return child;
   });
@@ -48,14 +48,14 @@ export function Stack({ children, overrideStyles, overrideItemStyles }: StackPro
 }
 
 interface StackItemProps {
-  itemStyles?: CSSProperties;
+  overrideItemStyles?: CSSProperties;
   children: any;
 }
 
-export function StackItem({ children, itemStyles }: StackItemProps) {
+export function StackItem({ children, overrideItemStyles }: StackItemProps) {
   const styles = useStyles();
   return (
-    <div className={styles.item} style={itemStyles}>
+    <div className={styles.item} style={overrideItemStyles}>
       {children}
     </div>
   );
