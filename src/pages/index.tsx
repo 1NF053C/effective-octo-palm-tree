@@ -1,20 +1,31 @@
 import Head from "next/head";
-import { Input } from '@fluentui/react-components';
-import { Card } from "@fluentui/react-components/unstable";
+import { Input } from "@fluentui/react-components";
+import {
+  Card,
+  CardHeader,
+} from "@fluentui/react-components/unstable";
 import { makeStyles, shorthands } from "@fluentui/react-components";
 import { Stack, StackItem } from "@/components/stack";
+import Image from "next/image";
 
 const useStyles = makeStyles({
-  card: {
-    ...shorthands.margin("48px"),
-    ...shorthands.borderRadius("4px"),
-    height: "600px",
-  },
-  leftPanel: {
-    width: "200px",
-  },
   main: {
     backgroundImage: 'url("/website-background.png")',
+    backgroundSize: "cover",
+  },
+  card: {
+    ...shorthands.margin("48px"),
+    ...shorthands.borderRadius("0px"),
+    height: "600px",
+    width: "350px",
+  },
+  cardHeader: {
+    paddingTop: "30px",
+    paddingBottom: "30px",
+  },
+  cardFooter: {
+    paddingTop: "30px",
+    paddingBottom: "30px",
   },
 });
 
@@ -30,37 +41,79 @@ export default function Home() {
       </Head>
       <main className={styles.main}>
         <Card className={styles.card}>
+          <CardHeader
+            className={styles.cardHeader}
+            header={
+              <Stack
+                overrideStyles={{
+                  flexDirection: "row",
+                  justifyContent: "center",
+                }}
+              >
+                <StackItem>
+                  <span
+                    style={{
+                      fontSize: "48px",
+                      lineHeight: "48px",
+                    }}
+                  >
+                    Welcome
+                  </span>
+                </StackItem>
+              </Stack>
+            }
+          />
           <Stack
             overrideStyles={{
               flexDirection: "row",
               justifyContent: "center",
-              alignContent: "center",
             }}
-            overrideItemStyles={{ margin: "10px", width: "100%" }}
+            overrideItemStyles={{ marginBottom: "10px" }}
           >
             <StackItem>
               <Stack>
                 <StackItem>
-                  <div
-                    style={{
-                      fontSize: "48px",
-                      lineHeight: "48px",
+                  <Stack
+                    overrideStyles={{
+                      gap: "20px",
+                      flexDirection: "row",
                       marginTop: "20px",
                       marginBottom: "20px",
                     }}
                   >
-                    Hello, <br /> Traveler
-                  </div>
-                </StackItem>
-                <StackItem>
-                  <Stack overrideStyles={{ marginTop: '20px', marginBottom: '20px'}}>
-                    {["Link1", "Link2", "Link3"].map((text) => (
-                      <StackItem>{text}</StackItem>
+                    {[
+                      {
+                        image: {
+                          alt: "a developer drinking coffee, pixel art",
+                          url: "/dev-pixel-art-1.png",
+                        },
+                        url: "https://github.com/1NF053C",
+                      },
+                      {
+                        image: {
+                          url: "/honey-pot.png",
+                          alt: "a pot of honey",
+                        },
+                        url: "coming soon",
+                      },
+                    ].map((link) => (
+                      <StackItem>
+                        <a
+                          rel="noopener noreferrer"
+                          target="_blank"
+                          href={link.url}
+                        >
+                          <Image
+                            style={{ border: "1px solid #ccc" }}
+                            height="48"
+                            width="48"
+                            src={link.image.url}
+                            alt={link.image.alt}
+                          />
+                        </a>
+                      </StackItem>
                     ))}
                   </Stack>
-                </StackItem>
-                <StackItem overrideItemStyles={{ marginBottom: '0px' }}>
-                  <Input type="search" placeholder="Search" />
                 </StackItem>
               </Stack>
             </StackItem>
