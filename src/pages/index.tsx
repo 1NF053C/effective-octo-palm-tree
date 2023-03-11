@@ -204,7 +204,7 @@ function WelcomeMessage() {
   return (
     <div className={styles.welcomeMessage}>
       <div className={mergeClasses(styles.welcomeMessageText, "col")}>
-        Hello, I'm Chris.
+        Hello, I&apos;m Chris.
       </div>
     </div>
   );
