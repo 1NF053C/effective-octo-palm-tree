@@ -16,6 +16,7 @@ const useStyles = makeStyles({
   main: {
     backgroundImage: 'url("/website-background.png")',
     backgroundSize: "cover",
+    paddingTop: '48px'
   },
   container: {
     display: "flex",
@@ -23,7 +24,7 @@ const useStyles = makeStyles({
   },
   leftCard: {
     ...shorthands.borderRadius("0px"),
-    height: "600px",
+    minHeight: "600px",
     width: "500px",
     [XS]: {
       width: "80vw",
@@ -54,9 +55,11 @@ const useStyles = makeStyles({
       maxWidth: "40vw",
     },
   },
-  welcomeMessage: {},
+  welcomeMessage: {
+    display: 'grid',
+    "place-items": 'center'
+  },
   welcomeMessageText: {
-    textAlign: "center",
     fontSize: "48px",
     [XS]: {
       fontSize: "36px",
@@ -67,6 +70,7 @@ const useStyles = makeStyles({
     marginLeft: "20%",
     marginRight: "20%",
     display: "grid",
+    "place-content": "center",
     gridGap: "1rem",
     gridTemplateColumns: "repeat(auto-fit, minmax(50px, 1fr))",
   },
@@ -74,8 +78,9 @@ const useStyles = makeStyles({
     textAlign: "center",
   },
   search: {
-    bottom: "0px",
-    textAlign: "center",
+    display: 'grid',
+    "place-content": "center",
+    paddingBottom: '20px'
   },
 });
 
