@@ -17,9 +17,11 @@ const useStyles = makeStyles({
     position: "fixed",
     zIndex: 1,
   },
-  container: {
-    display: "flex",
-    justifyContent: "center",
+  content: {
+    paddingTop: '48px',
+    [XS]: {
+      paddingTop: '30px'
+    }
   },
   leftCard: {
     ...shorthands.borderRadius("0px"),
@@ -112,7 +114,7 @@ export default function Home() {
             alt=""
           />
         </div>
-        <div className="row g-0 justify-content-center">
+        <div className={mergeClasses("row g-0 justify-content-center", styles.content)}>
           <div className="col-auto">
             <div className="row g-0 justify-content-center">
               <div className="col-auto">
