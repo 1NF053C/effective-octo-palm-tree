@@ -5,7 +5,10 @@ import {
   makeStyles,
   shorthands,
   Persona,
+  CompoundButton,
 } from "@fluentui/react-components";
+import { News24Regular } from "@fluentui/react-icons";
+
 import { Card } from "@fluentui/react-components/unstable";
 import Image from "next/image";
 
@@ -272,6 +275,12 @@ function Navigation() {
       ))}
     </div>
   );
+}
+
+function BlogLink() {
+  <CompoundButton icon={<News24Regular />} secondaryContent="Browse">
+    Example
+  </CompoundButton>;
 }
 
 function Search() {
