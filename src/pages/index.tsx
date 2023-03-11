@@ -14,7 +14,7 @@ const XS = "@media only screen and (max-width: 576px)";
 
 const useStyles = makeStyles({
   main: {
-    backgroundImage: 'url("/website-background.png")',
+    backgroundImage: 'url("/website-background.webp")',
     backgroundSize: "cover",
     paddingTop: '48px'
   },
@@ -139,7 +139,7 @@ function MidCard() {
       <Card
         className={styles.midCard}
         style={{
-          backgroundImage: 'url("/castle-background.png")',
+          backgroundImage: 'url("/castle-background.webp")',
           backgroundSize: "cover",
           backgroundPositionX: "-250px",
         }}
@@ -190,7 +190,7 @@ function Navigation() {
           id: "1",
           image: {
             alt: "a developer drinking coffee, pixel art",
-            url: "/dev-pixel-art-1.png",
+            url: "/dev-pixel-art-1.webp",
           },
           url: "https://github.com/1NF053C",
           text: "Github",
@@ -198,7 +198,7 @@ function Navigation() {
         {
           id: "2",
           image: {
-            url: "/honey-pot.png",
+            url: "/honey-pot.webp",
             alt: "a pot of honey",
           },
           url: "#",
@@ -208,7 +208,7 @@ function Navigation() {
           id: "3",
           image: {
             alt: "a developer drinking coffee, pixel art",
-            url: "/dev-pixel-art-1.png",
+            url: "/dev-pixel-art-1.webp",
           },
           url: "https://github.com/1NF053C",
           text: "Github",
@@ -216,7 +216,7 @@ function Navigation() {
         {
           id: "4",
           image: {
-            url: "/honey-pot.png",
+            url: "/honey-pot.webp",
             alt: "a pot of honey",
           },
           url: "#",
@@ -226,7 +226,7 @@ function Navigation() {
           id: "5",
           image: {
             alt: "a developer drinking coffee, pixel art",
-            url: "/dev-pixel-art-1.png",
+            url: "/dev-pixel-art-1.webp",
           },
           url: "https://github.com/1NF053C",
           text: "Github",
@@ -234,7 +234,7 @@ function Navigation() {
         {
           id: "6",
           image: {
-            url: "/honey-pot.png",
+            url: "/honey-pot.webp",
             alt: "a pot of honey",
           },
           url: "#",
