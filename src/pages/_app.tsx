@@ -1,5 +1,6 @@
 import "@/styles/globals.css";
-import 'office-ui-fabric-core/dist/css/fabric.min.css'
+import 'bootstrap/dist/css/bootstrap.css'
+
 import type { AppProps } from "next/app";
 import {
   FluentProvider,
