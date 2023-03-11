@@ -8,6 +8,9 @@ import {
 import { Card } from "@fluentui/react-components/unstable";
 import Image from "next/image";
 
+// breakpoint dimensions:
+// https://getbootstrap.com/docs/5.0/layout/breakpoints/
+
 const useStyles = makeStyles({
   main: {
     backgroundImage: 'url("/website-background.png")',
@@ -21,22 +24,34 @@ const useStyles = makeStyles({
     ...shorthands.borderRadius("0px"),
     height: "600px",
     width: "500px",
+    "@media only screen (max-width: 576px)": {
+      width: "400px",
+    },
   },
   midCard: {
     ...shorthands.borderRadius("0px"),
     height: "600px",
     width: "250px",
+    "@media only screen (max-width: 576px)": {
+      maxWidth: "200px",
+    },
   },
   endCard: {
     ...shorthands.borderRadius("0px"),
     ...shorthands.padding("0px"),
     height: "600px",
     width: "250px",
+    "@media only screen (max-width: 576px)": {
+      maxWidth: "200px",
+    },
   },
   shortCard: {
     ...shorthands.borderRadius("0px"),
     height: "300px",
     width: "250px",
+    "@media only screen (max-width: 576px)": {
+      maxWidth: "200px",
+    },
   },
   welcomeMessage: {},
   welcomeMessageText: {
