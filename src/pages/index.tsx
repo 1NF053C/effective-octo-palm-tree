@@ -8,6 +8,16 @@ import {
 import { Card } from "@fluentui/react-components/unstable";
 import Image from "next/image";
 
+/**
+ * office-fabric-ui breakpoints:
+ *  small	320px - 479px
+ *  medium	480px - 639px
+ *  large	640px - 1023px
+ *  extra large 1024px - 1365px
+ *  extra extra larger 1366px - 1919px
+ *  extra extra extra large 1920px and up
+ */
+
 const useStyles = makeStyles({
   main: {
     backgroundImage: 'url("/website-background.png")',
@@ -18,10 +28,12 @@ const useStyles = makeStyles({
     justifyContent: "center",
   },
   vertCentered: {
-    ...shorthands.margin('0px'),
-    position: 'absolute',
-    top: '50%',
-    transform: 'translateY(-50%)'
+    "@media only screen and (min-width: 1000px)": {
+      ...shorthands.margin("0px"),
+      position: "absolute",
+      top: "50%",
+      transform: "translateY(-50%)",
+    },
   },
   cardContainer: {
     ...shorthands.padding("0px"),
