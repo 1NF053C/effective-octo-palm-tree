@@ -11,6 +11,8 @@ import { News24Regular } from "@fluentui/react-icons";
 
 import { Card } from "@fluentui/react-components/unstable";
 import Image from "next/image";
+import Clock from "react-live-clock";
+const ReactFitText = require("react-fittext");
 
 // breakpoint dimensions:
 // https://getbootstrap.com/docs/5.0/layout/breakpoints/
@@ -62,6 +64,7 @@ const useStyles = makeStyles({
     },
   },
   shortCard: {
+    position: "relative",
     ...shorthands.borderRadius("0px"),
     height: "300px",
     width: "250px",
@@ -185,18 +188,59 @@ function EndCard() {
   return (
     <>
       <div className={styles.endCard}>
-        <div
-          className={styles.shortCard}
-          style={{
-            backgroundColor: "#222",
-          }}
-        ></div>
-        <div
-          className={styles.shortCard}
-          style={{
-            backgroundColor: "#444",
-          }}
-        ></div>
+        <div className={styles.shortCard}>
+          <Image
+            fill
+            src="/fantasy-landscape.webp"
+            alt="mountain landscape"
+            style={{ zIndex: 1 }}
+          />
+          <div
+            style={{
+              textShadow: "1px 1px 10px #fff, 1px 1px 10px #fff",
+              color: "#fff",
+              display: "grid",
+              placeContent: "center",
+              height: "100%",
+            }}
+          >
+            <h1 style={{ position: "relative", zIndex: "1", fontSize: '16px' }}>US/Pacific:</h1>
+            <h1 style={{ position: "relative", zIndex: "1", fontSize: '16px' }}>
+              <Clock
+                format="HH:mm:ss"
+                interval={1000}
+                ticking={true}
+                timezone={"US/Pacific"}
+              />
+            </h1>
+            <br />
+            <h1 style={{ position: "relative", zIndex: "1", fontSize: '16px' }}>US/Central:</h1>
+            <h1 style={{ position: "relative", zIndex: "1", fontSize: '16px' }}>
+              <Clock
+                format="HH:mm:ss"
+                interval={1000}
+                ticking={true}
+                timezone={"US/Central"}
+              />
+            </h1>
+            <br />
+            <h1 style={{ position: "relative", zIndex: "1", fontSize: '16px' }}>US/Eastern:</h1>
+            <h1 style={{ position: "relative", zIndex: "1", fontSize: '16px' }}>
+              <Clock
+                format="HH:mm:ss"
+                interval={1000}
+                ticking={true}
+                timezone={"US/Eastern"}
+              />
+            </h1>
+          </div>
+          <div
+            className={styles.shortCard}
+            style={{
+              backgroundColor: "#444",
+            }}
+          ></div>
+        </div>
       </div>
     </>
   );
