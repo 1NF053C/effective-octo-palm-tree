@@ -10,6 +10,7 @@ import Image from "next/image";
 
 // breakpoint dimensions:
 // https://getbootstrap.com/docs/5.0/layout/breakpoints/
+const XS = "@media only screen and (max-width: 576px)";
 
 const useStyles = makeStyles({
   main: {
@@ -24,16 +25,16 @@ const useStyles = makeStyles({
     ...shorthands.borderRadius("0px"),
     height: "600px",
     width: "500px",
-    "@media only screen (max-width: 576px)": {
-      width: "400px",
+    [XS]: {
+      width: "80vw",
     },
   },
   midCard: {
     ...shorthands.borderRadius("0px"),
     height: "600px",
     width: "250px",
-    "@media only screen (max-width: 576px)": {
-      maxWidth: "200px",
+    [XS]: {
+      width: "40vw",
     },
   },
   endCard: {
@@ -41,16 +42,16 @@ const useStyles = makeStyles({
     ...shorthands.padding("0px"),
     height: "600px",
     width: "250px",
-    "@media only screen (max-width: 576px)": {
-      maxWidth: "200px",
+    [XS]: {
+      width: "40vw",
     },
   },
   shortCard: {
     ...shorthands.borderRadius("0px"),
     height: "300px",
     width: "250px",
-    "@media only screen (max-width: 576px)": {
-      maxWidth: "200px",
+    [XS]: {
+      maxWidth: "40vw",
     },
   },
   welcomeMessage: {},
