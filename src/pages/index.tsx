@@ -1,13 +1,27 @@
 import Head from "next/head";
-import { Input, mergeClasses } from "@fluentui/react-components";
+import {
+  Input,
+  mergeClasses,
+  makeStyles,
+  shorthands,
+} from "@fluentui/react-components";
 import { Card } from "@fluentui/react-components/unstable";
-import { makeStyles, shorthands } from "@fluentui/react-components";
 import Image from "next/image";
 
 const useStyles = makeStyles({
   main: {
     backgroundImage: 'url("/website-background.png")',
     backgroundSize: "cover",
+  },
+  container: {
+    display: "flex",
+    justifyContent: "center",
+  },
+  vertCentered: {
+    ...shorthands.margin('0px'),
+    position: 'absolute',
+    top: '50%',
+    transform: 'translateY(-50%)'
   },
   cardContainer: {
     ...shorthands.padding("0px"),
@@ -36,6 +50,7 @@ const useStyles = makeStyles({
   },
   welcomeMessage: {},
   welcomeMessageText: {
+    textAlign: "center",
     fontSize: "48px",
     lineHeight: "48px",
   },
@@ -57,17 +72,11 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={styles.main}>
-        <div className="ms-Grid">
-          <div className="ms-Grid-row">
-            <div className="ms-Grid-col"></div>
-            <div className="ms-Grid-col">
-              <div className={mergeClasses("ms-Grid-row")}>
-                <LeftCard className="ms-Grid-col ms-sm12 ms-md12 ms-lg12 ms-xl9" />
-                <MidCard className="ms-Grid-col ms-sm6 ms-md6 ms-lg6 ms-xl3" />
-                <EndCard className="ms-Grid-col ms-sm6 ms-md6 ms-lg6 ms-xl3" />
-              </div>
-            </div>
-            <div className="ms-Grid-col"></div>
+        <div className={mergeClasses(styles.container)}>
+          <div className={mergeClasses("ms-Grid-row", styles.vertCentered)}>
+            <LeftCard className="ms-Grid-col ms-sm12 ms-md12 ms-lg12 ms-xl9" />
+            <MidCard className="ms-Grid-col ms-sm6 ms-md6 ms-lg6 ms-xl3" />
+            <EndCard className="ms-Grid-col ms-sm6 ms-md6 ms-lg6 ms-xl3" />
           </div>
         </div>
       </main>
@@ -118,13 +127,13 @@ function EndCard({ className }: { className: string }) {
         <div
           className={mergeClasses(styles.shortCard)}
           style={{
-            backgroundColor: "black",
+            backgroundColor: "#aaa",
           }}
         ></div>
         <div
           className={mergeClasses(styles.shortCard)}
           style={{
-            backgroundColor: "gray",
+            backgroundColor: "#ddd",
           }}
         ></div>
       </div>
