@@ -14,9 +14,8 @@ const XS = "@media only screen and (max-width: 576px)";
 
 const useStyles = makeStyles({
   main: {
-    backgroundImage: 'url("/website-background.webp")',
-    backgroundSize: "cover",
-    paddingTop: '48px'
+    position: "fixed",
+    zIndex: 1,
   },
   container: {
     display: "flex",
@@ -56,8 +55,8 @@ const useStyles = makeStyles({
     },
   },
   welcomeMessage: {
-    display: 'grid',
-    "place-items": 'center'
+    display: "grid",
+    "place-items": "center",
   },
   welcomeMessageText: {
     fontSize: "48px",
@@ -78,9 +77,9 @@ const useStyles = makeStyles({
     textAlign: "center",
   },
   search: {
-    display: 'grid',
+    display: "grid",
     "place-content": "center",
-    paddingBottom: '20px'
+    paddingBottom: "20px",
   },
 });
 
@@ -95,6 +94,24 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={mergeClasses(styles.main, "container-fluid")}>
+        <div
+          style={{
+            position: "fixed",
+            height: "100%",
+            width: "100%",
+            left: "0",
+            top: "0",
+            pointerEvents: "none",
+            zIndex: -1
+          }}
+        >
+          <Image
+            fill
+            style={{ objectFit: "cover", zIndex: -1 }}
+            src="/website-background.webp"
+            alt=""
+          />
+        </div>
         <div className="row g-0 justify-content-center">
           <div className="col-auto">
             <div className="row g-0 justify-content-center">
