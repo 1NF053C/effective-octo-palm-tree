@@ -4,6 +4,7 @@ import {
   mergeClasses,
   makeStyles,
   shorthands,
+  Persona,
 } from "@fluentui/react-components";
 import { Card } from "@fluentui/react-components/unstable";
 import Image from "next/image";
@@ -17,11 +18,20 @@ const useStyles = makeStyles({
     position: "fixed",
     zIndex: 1,
   },
+  imageContainer: {
+    position: "fixed",
+    height: "100%",
+    width: "100%",
+    left: "0",
+    top: "0",
+    pointerEvents: "none",
+    zIndex: -1,
+  },
   content: {
-    paddingTop: '48px',
+    paddingTop: "48px",
     [XS]: {
-      paddingTop: '30px'
-    }
+      paddingTop: "20px",
+    },
   },
   leftCard: {
     ...shorthands.borderRadius("0px"),
@@ -61,15 +71,19 @@ const useStyles = makeStyles({
     "place-items": "center",
   },
   welcomeMessageText: {
-    fontSize: "48px",
+    fontSize: "36px",
     [XS]: {
-      fontSize: "36px",
+      fontSize: "24px",
     },
-    lineHeight: "48px",
+    lineHeight: "36px",
+  },
+  profileInfo: {
+    display: "grid",
+    "place-content": "center",
   },
   navigationList: {
-    marginLeft: "20%",
-    marginRight: "20%",
+    marginLeft: "25%",
+    marginRight: "25%",
     display: "grid",
     "place-content": "center",
     gridGap: "1rem",
@@ -80,7 +94,7 @@ const useStyles = makeStyles({
   },
   search: {
     display: "grid",
-    "place-content": "center",
+    "place-items": "center",
     paddingBottom: "20px",
   },
 });
@@ -90,23 +104,13 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>Welcome</title>
+        <title>Chris - Software Developer</title>
         <meta name="description" content="Chris's personal website" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/favicon.webp" />
       </Head>
       <main className={mergeClasses(styles.main, "container-fluid")}>
-        <div
-          style={{
-            position: "fixed",
-            height: "100%",
-            width: "100%",
-            left: "0",
-            top: "0",
-            pointerEvents: "none",
-            zIndex: -1
-          }}
-        >
+        <div className={styles.imageContainer}>
           <Image
             fill
             style={{ objectFit: "cover", zIndex: -1 }}
@@ -114,7 +118,12 @@ export default function Home() {
             alt=""
           />
         </div>
-        <div className={mergeClasses("row g-0 justify-content-center", styles.content)}>
+        <div
+          className={mergeClasses(
+            "row g-0 justify-content-center",
+            styles.content
+          )}
+        >
           <div className="col-auto">
             <div className="row g-0 justify-content-center">
               <div className="col-auto">
@@ -144,6 +153,7 @@ function LeftCard() {
     <>
       <Card className={styles.leftCard}>
         <WelcomeMessage />
+        <ProfileInfo />
         <Navigation />
         <Search />
       </Card>
@@ -194,9 +204,28 @@ function WelcomeMessage() {
   return (
     <div className={styles.welcomeMessage}>
       <div className={mergeClasses(styles.welcomeMessageText, "col")}>
-        Welcome
+        Hello, I'm Chris.
       </div>
     </div>
+  );
+}
+
+function ProfileInfo() {
+  const styles = useStyles();
+  return (
+    <Persona
+      className={styles.profileInfo}
+      name="Chris"
+      secondaryText="Software Developer"
+      tertiaryText="Available for work"
+      presence={{ status: "available" }}
+      size="huge"
+      avatar={{
+        image: {
+          src: "/profile-pic.webp",
+        },
+      }}
+    />
   );
 }
 
@@ -208,8 +237,8 @@ function Navigation() {
         {
           id: "1",
           image: {
-            alt: "a developer drinking coffee, pixel art",
-            url: "/dev-pixel-art-1.webp",
+            alt: "github logo",
+            url: "/github-mark.webp",
           },
           url: "https://github.com/1NF053C",
           text: "Github",
@@ -217,59 +246,23 @@ function Navigation() {
         {
           id: "2",
           image: {
-            url: "/honey-pot.webp",
-            alt: "a pot of honey",
+            url: "/linkedin.webp",
+            alt: "linkedin logo",
           },
-          url: "#",
-          text: "coming soon",
-        },
-        {
-          id: "3",
-          image: {
-            alt: "a developer drinking coffee, pixel art",
-            url: "/dev-pixel-art-1.webp",
-          },
-          url: "https://github.com/1NF053C",
-          text: "Github",
-        },
-        {
-          id: "4",
-          image: {
-            url: "/honey-pot.webp",
-            alt: "a pot of honey",
-          },
-          url: "#",
-          text: "coming soon",
-        },
-        {
-          id: "5",
-          image: {
-            alt: "a developer drinking coffee, pixel art",
-            url: "/dev-pixel-art-1.webp",
-          },
-          url: "https://github.com/1NF053C",
-          text: "Github",
-        },
-        {
-          id: "6",
-          image: {
-            url: "/honey-pot.webp",
-            alt: "a pot of honey",
-          },
-          url: "#",
-          text: "coming soon",
+          url: "https://linkedin.com/in/chris-d7",
+          text: "Linkedin",
         },
       ].map((link) => (
         <div key={link.id} className={mergeClasses(styles.navigationListItem)}>
           <a rel="noopener noreferrer" target="_blank" href={link.url}>
             <Image
               style={{
-                border: "1px solid #ccc",
                 marginLeft: "2px",
                 marginRight: "2px",
               }}
               height="48"
               width="48"
+              quality="100"
               src={link.image.url}
               alt={link.image.alt}
             />
@@ -285,7 +278,15 @@ function Search() {
   const styles = useStyles();
   return (
     <div className={styles.search}>
-      <Input className="col" type="search" placeholder="Search" />
+      <div style={{ width: "80%" }}>
+        <Input
+          disabled={true}
+          style={{ width: "100%" }}
+          className="col"
+          type="search"
+          placeholder="Search"
+        />
+      </div>
     </div>
   );
 }
