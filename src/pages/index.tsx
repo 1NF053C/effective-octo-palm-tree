@@ -58,12 +58,24 @@ const useStyles = makeStyles({
   welcomeMessageText: {
     textAlign: "center",
     fontSize: "48px",
+    [XS]: {
+      fontSize: "36px",
+    },
     lineHeight: "48px",
   },
-  navigationList: {},
-  navigationListItem: {},
+  navigationList: {
+    marginLeft: "20%",
+    marginRight: "20%",
+    display: "grid",
+    gridGap: "1rem",
+    gridTemplateColumns: "repeat(auto-fit, minmax(50px, 1fr))",
+  },
+  navigationListItem: {
+    textAlign: "center",
+  },
   search: {
     bottom: "0px",
+    textAlign: "center",
   },
 });
 
@@ -107,15 +119,9 @@ function LeftCard() {
   return (
     <>
       <Card className={styles.leftCard}>
-        <div className="row">
-          <WelcomeMessage />
-        </div>
-        <div className="row">
-          <Navigation />
-        </div>
-        <div className="row">
-          <Search />
-        </div>
+        <WelcomeMessage />
+        <Navigation />
+        <Search />
       </Card>
     </>
   );
@@ -174,61 +180,79 @@ function Navigation() {
   const styles = useStyles();
   return (
     <div className={styles.navigationList}>
-      <div className="col">
-        {[
-          {
-            id: "1",
-            image: {
-              alt: "a developer drinking coffee, pixel art",
-              url: "/dev-pixel-art-1.png",
-            },
-            url: "https://github.com/1NF053C",
-            text: "Github",
+      {[
+        {
+          id: "1",
+          image: {
+            alt: "a developer drinking coffee, pixel art",
+            url: "/dev-pixel-art-1.png",
           },
-          {
-            id: "2",
-            image: {
-              url: "/honey-pot.png",
-              alt: "a pot of honey",
-            },
-            url: "#",
-            text: "coming soon",
+          url: "https://github.com/1NF053C",
+          text: "Github",
+        },
+        {
+          id: "2",
+          image: {
+            url: "/honey-pot.png",
+            alt: "a pot of honey",
           },
-          {
-            id: "3",
-            image: {
-              alt: "a developer drinking coffee, pixel art",
-              url: "/dev-pixel-art-1.png",
-            },
-            url: "https://github.com/1NF053C",
-            text: "Github",
+          url: "#",
+          text: "coming soon",
+        },
+        {
+          id: "3",
+          image: {
+            alt: "a developer drinking coffee, pixel art",
+            url: "/dev-pixel-art-1.png",
           },
-          {
-            id: "4",
-            image: {
-              url: "/honey-pot.png",
-              alt: "a pot of honey",
-            },
-            url: "#",
-            text: "coming soon",
+          url: "https://github.com/1NF053C",
+          text: "Github",
+        },
+        {
+          id: "4",
+          image: {
+            url: "/honey-pot.png",
+            alt: "a pot of honey",
           },
-        ].map((link) => (
-          <div
-            key={link.id}
-            className={mergeClasses(styles.navigationListItem, "col")}
-          >
-            <a rel="noopener noreferrer" target="_blank" href={link.url}>
-              <Image
-                style={{ border: "1px solid #ccc" }}
-                height="48"
-                width="48"
-                src={link.image.url}
-                alt={link.image.alt}
-              />
-            </a>
-          </div>
-        ))}
-      </div>
+          url: "#",
+          text: "coming soon",
+        },
+        {
+          id: "5",
+          image: {
+            alt: "a developer drinking coffee, pixel art",
+            url: "/dev-pixel-art-1.png",
+          },
+          url: "https://github.com/1NF053C",
+          text: "Github",
+        },
+        {
+          id: "6",
+          image: {
+            url: "/honey-pot.png",
+            alt: "a pot of honey",
+          },
+          url: "#",
+          text: "coming soon",
+        },
+      ].map((link) => (
+        <div key={link.id} className={mergeClasses(styles.navigationListItem)}>
+          <a rel="noopener noreferrer" target="_blank" href={link.url}>
+            <Image
+              style={{
+                border: "1px solid #ccc",
+                marginLeft: "2px",
+                marginRight: "2px",
+              }}
+              height="48"
+              width="48"
+              src={link.image.url}
+              alt={link.image.alt}
+            />
+          </a>
+          <div>{link.text}</div>
+        </div>
+      ))}
     </div>
   );
 }
