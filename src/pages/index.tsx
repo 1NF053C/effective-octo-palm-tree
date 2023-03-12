@@ -114,7 +114,7 @@ export default function Home() {
     <>
       <Head>
         <title>Chris - Software Developer</title>
-        <meta name="description" content="Chris's personal website" />
+        <meta name="description" content="Chris&apos;s personal website" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.webp" />
       </Head>
@@ -262,7 +262,7 @@ function WelcomeMessage() {
   return (
     <div className={styles.welcomeMessage}>
       <div className={mergeClasses(styles.welcomeMessageText, "col")}>
-        Hello, I&apos;m Chris. <br /> I'm interested in Cybersecurity, Site Reliability Engineering, and Software Development.
+        Hello, I&apos;m Chris. <br /> I&apos;m interested in Cybersecurity, Site Reliability Engineering, and Software Development.
       </div>
     </div>
   );
