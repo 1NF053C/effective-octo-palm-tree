@@ -159,14 +159,12 @@ export default function Home() {
 function LeftCard() {
   const styles = useStyles();
   return (
-    <>
       <Card className={styles.leftCard}>
         <WelcomeMessage />
         <ProfileInfo />
         <Navigation />
         <Search />
       </Card>
-    </>
   );
 }
 
