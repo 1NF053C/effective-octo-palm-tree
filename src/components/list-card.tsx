@@ -1,6 +1,4 @@
 import {
-  PresenceBadgeStatus,
-  Avatar,
   DataGridBody,
   DataGridRow,
   DataGrid,

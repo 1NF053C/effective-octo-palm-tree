@@ -35,8 +35,10 @@ const useStyles = makeStyles({
   },
   content: {
     paddingTop: "48px",
+    paddingBottom: "48px",
     [XS]: {
       paddingTop: "20px",
+      paddingBottom: "20px"
     },
   },
   leftCard: {
