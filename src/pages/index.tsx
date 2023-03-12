@@ -12,10 +12,11 @@ import { News24Regular } from "@fluentui/react-icons";
 import { Card } from "@fluentui/react-components/unstable";
 import Image from "next/image";
 import Clock from "react-live-clock";
-const ReactFitText = require("react-fittext");
+import { ListCard } from '../components/list-card';
 
 // breakpoint dimensions:
 // https://getbootstrap.com/docs/5.0/layout/breakpoints/
+
 const XS = "@media only screen and (max-width: 576px)";
 
 const useStyles = makeStyles({
@@ -41,7 +42,7 @@ const useStyles = makeStyles({
   leftCard: {
     ...shorthands.borderRadius("0px"),
     minHeight: "600px",
-    width: "500px",
+    width: "560px",
     [XS]: {
       width: "80vw",
     },
@@ -49,7 +50,7 @@ const useStyles = makeStyles({
   midCard: {
     ...shorthands.borderRadius("0px"),
     height: "600px",
-    width: "250px",
+    width: "280px",
     [XS]: {
       width: "40vw",
     },
@@ -58,7 +59,7 @@ const useStyles = makeStyles({
     ...shorthands.borderRadius("0px"),
     ...shorthands.padding("0px"),
     height: "600px",
-    width: "250px",
+    width: "280px",
     [XS]: {
       width: "40vw",
     },
@@ -67,7 +68,7 @@ const useStyles = makeStyles({
     position: "relative",
     ...shorthands.borderRadius("0px"),
     height: "300px",
-    width: "250px",
+    width: "280px",
     [XS]: {
       maxWidth: "40vw",
     },
@@ -204,8 +205,10 @@ function EndCard() {
               height: "100%",
             }}
           >
-            <h1 style={{ position: "relative", zIndex: "1", fontSize: '16px' }}>US/Pacific:</h1>
-            <h1 style={{ position: "relative", zIndex: "1", fontSize: '16px' }}>
+            <h1 style={{ position: "relative", zIndex: "1", fontSize: "16px" }}>
+              US/Pacific:
+            </h1>
+            <h1 style={{ position: "relative", zIndex: "1", fontSize: "16px" }}>
               <Clock
                 format="HH:mm:ss"
                 interval={1000}
@@ -214,8 +217,10 @@ function EndCard() {
               />
             </h1>
             <br />
-            <h1 style={{ position: "relative", zIndex: "1", fontSize: '16px' }}>US/Central:</h1>
-            <h1 style={{ position: "relative", zIndex: "1", fontSize: '16px' }}>
+            <h1 style={{ position: "relative", zIndex: "1", fontSize: "16px" }}>
+              US/Central:
+            </h1>
+            <h1 style={{ position: "relative", zIndex: "1", fontSize: "16px" }}>
               <Clock
                 format="HH:mm:ss"
                 interval={1000}
@@ -224,8 +229,10 @@ function EndCard() {
               />
             </h1>
             <br />
-            <h1 style={{ position: "relative", zIndex: "1", fontSize: '16px' }}>US/Eastern:</h1>
-            <h1 style={{ position: "relative", zIndex: "1", fontSize: '16px' }}>
+            <h1 style={{ position: "relative", zIndex: "1", fontSize: "16px" }}>
+              US/Eastern:
+            </h1>
+            <h1 style={{ position: "relative", zIndex: "1", fontSize: "16px" }}>
               <Clock
                 format="HH:mm:ss"
                 interval={1000}
@@ -234,12 +241,14 @@ function EndCard() {
               />
             </h1>
           </div>
-          <div
-            className={styles.shortCard}
-            style={{
-              backgroundColor: "#444",
-            }}
-          ></div>
+        </div>
+        <div
+          className={styles.shortCard}
+          style={{
+            backgroundColor: "#fff",
+          }}
+        >
+          <ListCard />
         </div>
       </div>
     </>
