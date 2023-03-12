@@ -262,7 +262,7 @@ function WelcomeMessage() {
   return (
     <div className={styles.welcomeMessage}>
       <div className={mergeClasses(styles.welcomeMessageText, "col")}>
-        Hello, I&apos;m Chris. <br /> I&apos;m interested in Cybersecurity, Site Reliability Engineering, and Software Development.
+        Hello, I&apos;m Chris.
       </div>
     </div>
   );
@@ -276,6 +276,7 @@ function ProfileInfo() {
       name="Chris"
       secondaryText="Software Developer"
       tertiaryText="Available for work"
+      quaternaryText="Interests: Cybersecurity, Site Reliability Engineering, and Software Engineering"
       presence={{ status: "available" }}
       size="huge"
       avatar={{
