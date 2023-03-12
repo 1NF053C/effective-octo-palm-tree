@@ -132,15 +132,6 @@ const columns: TableColumnDefinition<Item>[] = [
       );
     },
   }),
-  createTableColumn<Item>({
-    columnId: "lastUpdated",
-    compare: (a, b) => {
-      return a.lastUpdated.timestamp - b.lastUpdated.timestamp;
-    },
-    renderCell: (item) => {
-      return item.lastUpdated.label
-    },
-  }),
 ];
 
 export const ListCard = () => {
@@ -151,12 +142,21 @@ export const ListCard = () => {
       sortable
       getRowId={(item) => item.url.label}
       size="extra-small"
+      columnSizingOptions={{
+        url: {
+          minWidth: 50,
+          idealWidth: 120,
+          defaultWidth: 95,
+        }
+      }}
     >
       <DataGridBody<Item>>
         {({ item, rowId }) => (
           <DataGridRow<Item> key={rowId}>
             {({ renderCell }) => (
-              <DataGridCell>{renderCell(item)}</DataGridCell>
+              <div style={{ display: "grid", placeContent: "center" }}>
+                <DataGridCell>{renderCell(item)}</DataGridCell>
+              </div>
             )}
           </DataGridRow>
         )}
