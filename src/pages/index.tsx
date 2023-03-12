@@ -262,7 +262,7 @@ function WelcomeMessage() {
   return (
     <div className={styles.welcomeMessage}>
       <div className={mergeClasses(styles.welcomeMessageText, "col")}>
-        Hello, I&apos;m Chris.
+        Hello, I&apos;m Chris. <br /> I'm interested in Cybersecurity, Site Reliability Engineering, and Software Development.
       </div>
     </div>
   );
