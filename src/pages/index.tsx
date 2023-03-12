@@ -9,10 +9,10 @@ import {
 } from "@fluentui/react-components";
 import { News24Regular } from "@fluentui/react-icons";
 
-import { Card } from "@fluentui/react-components/unstable";
+// import { Card } from "@fluentui/react-components/unstable";
 import Image from "next/image";
 import Clock from "react-live-clock";
-import { ListCard } from '../components/list-card';
+import { ListCard } from "../components/list-card";
 
 // breakpoint dimensions:
 // https://getbootstrap.com/docs/5.0/layout/breakpoints/
@@ -38,7 +38,7 @@ const useStyles = makeStyles({
     paddingBottom: "48px",
     [XS]: {
       paddingTop: "20px",
-      paddingBottom: "20px"
+      paddingBottom: "20px",
     },
   },
   leftCard: {
@@ -114,7 +114,7 @@ export default function Home() {
     <>
       <Head>
         <title>Chris - Software Developer</title>
-        <meta name="description" content="Chris&apos;s personal website" />
+        <meta name="description" content="Chris's personal website" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.webp" />
       </Head>
@@ -159,12 +159,12 @@ export default function Home() {
 function LeftCard() {
   const styles = useStyles();
   return (
-      <Card className={styles.leftCard}>
-        <WelcomeMessage />
-        <ProfileInfo />
-        <Navigation />
-        <Search />
-      </Card>
+    <div className={styles.leftCard}>
+      <WelcomeMessage />
+      <ProfileInfo />
+      <Navigation />
+      <Search />
+    </div>
   );
 }
 
@@ -172,14 +172,14 @@ function MidCard() {
   const styles = useStyles();
   return (
     <>
-      <Card
+      <div
         className={styles.midCard}
         style={{
           backgroundImage: 'url("/castle-background.webp")',
           backgroundSize: "cover",
           backgroundPositionX: "-250px",
         }}
-      ></Card>
+      ></div>
     </>
   );
 }
