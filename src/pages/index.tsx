@@ -43,6 +43,11 @@ const useStyles = makeStyles({
   },
   leftCard: {
     ...shorthands.borderRadius("0px"),
+    ...shorthands.padding('48px'),
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'space-between',
+    backgroundColor: '#fff',
     minHeight: "600px",
     width: "560px",
     [XS]: {
@@ -161,8 +166,11 @@ function LeftCard() {
   return (
     <div className={styles.leftCard}>
       <WelcomeMessage />
+      <br />
       <ProfileInfo />
+      <br />
       <Navigation />
+      <br />
       <Search />
     </div>
   );
