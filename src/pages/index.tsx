@@ -13,6 +13,7 @@ import { News24Regular } from "@fluentui/react-icons";
 import Image from "next/image";
 import Clock from "react-live-clock";
 import { ListCard } from "../components/list-card";
+import { useEffect } from "react";
 
 // breakpoint dimensions:
 // https://getbootstrap.com/docs/5.0/layout/breakpoints/
@@ -43,11 +44,11 @@ const useStyles = makeStyles({
   },
   leftCard: {
     ...shorthands.borderRadius("0px"),
-    ...shorthands.padding('48px'),
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'space-between',
-    backgroundColor: '#fff',
+    ...shorthands.padding("48px"),
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "space-between",
+    backgroundColor: "#fff",
     minHeight: "600px",
     width: "560px",
     [XS]: {
@@ -126,6 +127,7 @@ export default function Home() {
       <main className={mergeClasses(styles.main, "container-fluid")}>
         <div className={styles.imageContainer}>
           <Image
+            // priority={true}
             fill
             style={{ objectFit: "cover", zIndex: -1 }}
             src="/website-background.webp"
@@ -285,11 +287,11 @@ function ProfileInfo() {
       quaternaryText="Interests: Cybersecurity, Site Reliability Engineering, and Software Engineering"
       presence={{ status: "available" }}
       size="huge"
-      avatar={{
+      /*avatar={{
         image: {
           src: "/profile-pic.webp",
         },
-      }}
+      }}*/
     />
   );
 }

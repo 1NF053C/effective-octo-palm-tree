@@ -7,7 +7,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "g": "cross-env NODE_OPTIONS=\"--max-old-space-size=8192\" yarn run build && yarn run start"
+    "g": "cross-env NODE_OPTIONS=\"--max-old-space-size=8192\" yarn run build && yarn run start",
+    "e": "cross-env NODE_OPTIONS=\"--max-old-space-size=8192\" yarn run build && next export",
+    "s": "http-server ./out"
   },
   "dependencies": {
     "@fluentui/react-components": "^9.16.0",
