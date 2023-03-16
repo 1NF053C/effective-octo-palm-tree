@@ -29,7 +29,7 @@ export function AboutMeCard() {
     <div className="three-card-layout">
       <ThreeCardLayout
         first={
-          <div className="stretch">
+          <Flex h="100%" justifyContent="center" direction="column">
             <SoftwareEngineerCandidateCard
               name="Chris"
               title="Frontend Developer"
@@ -37,7 +37,7 @@ export function AboutMeCard() {
               isLookingForJob={true}
               skills="JavaScript, React, HTML, CSS, TypeScript, Node.js, Amazon Web Services, ...and more"
             />
-          </div>
+          </Flex>
         }
         second={
           <div className="stretch" style={{ position: "relative" }}>
@@ -51,11 +51,6 @@ export function AboutMeCard() {
         third={
           <Flex h="100%" direction={"column"} justifyContent="center">
             <Box h="50%" bg="gray.500" position="relative">
-              <BackgroundImage
-                src="/images/fantasy-landscape.webp"
-                alt="decorative castle background"
-                objectPosition="-56px 50%"
-              />
               <TimeZoneClocks />
             </Box>
             <Box bg="white" h="50%" overflowY="hidden">
