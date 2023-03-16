@@ -50,7 +50,7 @@ export function AboutMeCard() {
         }
         third={
           <Flex h="100%" direction={"column"} justifyContent="center">
-            <Box h="50%" bg="gray.500" position="relative">
+            <Box h="50%" bg="black" position="relative">
               <TimeZoneClocks />
             </Box>
             <Box bg="white" h="50%" overflowY="hidden">
