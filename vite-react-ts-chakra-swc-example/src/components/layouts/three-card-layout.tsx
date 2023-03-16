@@ -12,7 +12,7 @@ type ThreeCardLayoutProps = {
   first: JSX.Element;
   second: JSX.Element;
   third: JSX.Element;
-}
+};
 
 export function ThreeCardLayout({
   first,
@@ -32,7 +32,6 @@ export function ThreeCardLayout({
       <Box
         w={isViewportTiny ? TINY_WIDTH : { base: BASE_WIDTH }}
         h={COL_HEIGHT}
-        bg="gray.400"
       >
         {first}
       </Box>
@@ -40,10 +39,10 @@ export function ThreeCardLayout({
         w={isViewportTiny ? TINY_WIDTH : { base: BASE_WIDTH }}
         height={ROW_HEIGHT}
       >
-        <Box w={HALF_BASE_WIDTH} h={COL_HEIGHT} bg="gray.500">
+        <Box w={HALF_BASE_WIDTH} h={COL_HEIGHT}>
           {second}
         </Box>
-        <Box w={HALF_BASE_WIDTH} h={COL_HEIGHT} bg="gray.600">
+        <Box w={HALF_BASE_WIDTH} h={COL_HEIGHT}>
           {third}
         </Box>
       </Flex>
