@@ -12,15 +12,33 @@ import {
   Tr,
   Th,
   Td,
-  TableCaption,
   TableContainer,
+  Text,
+  Avatar,
+  Badge,
+  Stack,
+  Tag,
+  TagLabel,
+  TagLeftIcon,
 } from "@chakra-ui/react";
+
+import { FaCode } from "react-icons/fa";
 
 export function AboutMeCard() {
   return (
     <div className="three-card-layout">
       <ThreeCardLayout
-        first={<div className="stretch"></div>}
+        first={
+          <div className="stretch">
+            <SoftwareEngineerCandidateCard
+              name="Chris"
+              title="Frontend Developer"
+              avatarSrc="/images/profile-pic.webp"
+              isLookingForJob={true}
+              skills="JavaScript, React, HTML, CSS, TypeScript, Node.js, Amazon Web Services, ...and more"
+            />
+          </div>
+        }
         second={
           <div className="stretch" style={{ position: "relative" }}>
             <BackgroundImage
@@ -47,6 +65,53 @@ export function AboutMeCard() {
         }
       />
     </div>
+  );
+}
+
+function SoftwareEngineerCandidateCard(props: any) {
+  const { name, title, avatarSrc, isLookingForJob, skills } = props;
+
+  return (
+    <>
+      <Flex
+        direction={["column", "row"]}
+        alignItems={["center", "flex-start"]}
+        justifyContent="space-between"
+        p={4}
+        bg="white"
+        rounded="md"
+      >
+        <Stack spacing={10} w="100%" ml={[0, 4]}>
+          <Box>
+            <Avatar src={avatarSrc} />
+          </Box>
+          <Box ml="3">
+            <Text fontWeight="bold">{name}</Text>
+            <Text fontSize="sm">Software Developer</Text>
+            <Badge ml="1" colorScheme="green">
+              Open to Work
+            </Badge>
+          </Box>
+          <Box>
+            <Text fontWeight="bold">Skills:</Text>
+          </Box>
+          <Box>
+            {skills.split(", ").map((skill: string) => (
+              <Tag
+                key={skill}
+                size="sm"
+                variant="solid"
+                colorScheme="purple"
+                m="2px"
+              >
+                <TagLeftIcon as={FaCode} />
+                <TagLabel>{skill}</TagLabel>
+              </Tag>
+            ))}
+          </Box>
+        </Stack>
+      </Flex>
+    </>
   );
 }
 
